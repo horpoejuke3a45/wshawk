@@ -2,7 +2,7 @@
 
 All notable changes to WSHawk will be documented in this file.
 
-## [2.0.2] - 2024-12-07
+## [2.0.2] - 2025-12-07
 
 ### Fixed
 - Version mismatch between `__init__.py` and package files (now all 2.0.2)
@@ -20,13 +20,13 @@ All notable changes to WSHawk will be documented in this file.
 - Better error handling with specific exception types (ongoing)
 - All CLI commands work correctly (wshawk, wshawk-interactive, wshawk-advanced)
 
-## [2.0.1] - 2024-12-07
+## [2.0.1] - 2025-12-07
 
 ### Changed
 - Cleaned up documentation
 - Removed attribution text from README
 
-## [2.0.0] - 2024-12-07
+## [2.0.0] - 2025-12-07
 
 ### Added
 - Complete rewrite with advanced features
