@@ -58,12 +58,60 @@ class SessionHijackingTester:
     - Privilege escalation detection
     """
     
-    def __init__(self, target_url: str):
+    def __init__(self, target_url: str, auth_config: Optional[Dict] = None):
+        """
+        Initialize session tester
+        
+        Args:
+            target_url: WebSocket URL to test
+            auth_config: Optional authentication configuration
+                {
+                    'action': 'login',  # or custom action
+                    'username_field': 'username',  # field name for username
+                    'password_field': 'password',  # field name for password
+                    'username': 'user1',  # default username
+                    'password': 'pass1',  # default password
+                    'custom_payload': {...}  # or provide full custom auth payload
+                }
+        """
         self.target_url = target_url
         self.results: List[SessionTestResult] = []
         self.captured_tokens: Dict[str, str] = {}
         self.captured_sessions: List[Dict] = []
         self.user_sessions: Dict[str, Dict] = {}  # user_id -> session_data
+        
+        # Default auth config
+        self.auth_config = auth_config or {
+            'action': 'login',
+            'username_field': 'username',
+            'password_field': 'password',
+            'username': 'user1',
+            'password': 'pass1'
+        }
+    
+    def _get_auth_payload(self, username: str = None, password: str = None) -> str:
+        """Generate authentication payload based on config"""
+        if 'custom_payload' in self.auth_config:
+            return json.dumps(self.auth_config['custom_payload'])
+        
+        username = username or self.auth_config.get('username', 'user1')
+        password = password or self.auth_config.get('password', 'pass1')
+        
+        payload = {
+            self.auth_config.get('action', 'login'): True,
+            self.auth_config.get('username_field', 'username'): username,
+            self.auth_config.get('password_field', 'password'): password
+        }
+        
+        # Handle action as separate field
+        if 'action' in self.auth_config:
+            payload = {
+                'action': self.auth_config['action'],
+                self.auth_config.get('username_field', 'username'): username,
+                self.auth_config.get('password_field', 'password'): password
+            }
+        
+        return json.dumps(payload)
     
     async def run_all_tests(self) -> List[SessionTestResult]:
         """Run all session security tests"""
@@ -103,7 +151,7 @@ class SessionHijackingTester:
             # Session 1: Capture token
             async with websockets.connect(self.target_url) as ws1:
                 # Send auth request
-                auth_msg = json.dumps({"action": "login", "username": "user1", "password": "pass1"})
+                auth_msg = self._get_auth_payload()
                 await ws1.send(auth_msg)
                 
                 response = await asyncio.wait_for(ws1.recv(), timeout=3.0)
@@ -208,7 +256,7 @@ class SessionHijackingTester:
             # Create two sessions
             async with websockets.connect(self.target_url) as ws1:
                 # User 1 authenticates
-                auth1 = json.dumps({"action": "login", "username": "user1", "password": "pass1"})
+                auth1 = self._get_auth_payload()
                 await ws1.send(auth1)
                 response1 = await asyncio.wait_for(ws1.recv(), timeout=3.0)
                 
@@ -261,7 +309,7 @@ class SessionHijackingTester:
         try:
             async with websockets.connect(self.target_url) as ws:
                 # Auth as regular user
-                auth = json.dumps({"action": "login", "username": "user1", "password": "pass1"})
+                auth = self._get_auth_payload()
                 await ws.send(auth)
                 await asyncio.wait_for(ws.recv(), timeout=3.0)
                 
@@ -356,7 +404,7 @@ class SessionHijackingTester:
         try:
             async with websockets.connect(self.target_url) as ws:
                 # Auth as regular user
-                auth = json.dumps({"action": "login", "username": "user1", "password": "pass1"})
+                auth = self._get_auth_payload()
                 await ws.send(auth)
                 response = await asyncio.wait_for(ws.recv(), timeout=3.0)
                 
