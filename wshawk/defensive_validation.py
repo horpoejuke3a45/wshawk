@@ -396,7 +396,7 @@ class CSWSHValidator(DefensiveValidationModule):
             try:
                 ws = await websockets.connect(
                     self.target_url,
-                    extra_headers={'Origin': origin}
+                    additional_headers={'Origin': origin}
                 )
                 
                 vulnerable_origins.append(origin)
